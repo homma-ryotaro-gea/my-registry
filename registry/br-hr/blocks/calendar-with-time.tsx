@@ -71,28 +71,18 @@ const CalendarWithTime = ({
 	};
 
 	useEffect(() => {
-		// 時間が最小値を超えていたら選択しない
-		console.log("minHour", minHour);
-		console.log("maxHour", maxHour);
-		console.log("minMinute", minMinute);
-		console.log("maxMinute", maxMinute);
-		console.log("dayjs(date).hour()", dayjs(date).hour());
 		if (minHour !== undefined && dayjs(date).hour() < minHour) {
-			console.log("minHourを超えていたら選択しない");
 			return;
 		}
 		// 時間が最大値を超えていたら選択しない
 		if (maxHour !== undefined && dayjs(date).hour() > maxHour) {
-			console.log("maxHourを超えていたら選択しない");
 			return;
 		}
 		// 分が最小値を超えていたら選択しない
 		if (minMinute !== undefined && dayjs(date).minute() < minMinute) {
-			console.log("minMinuteを超えていたら選択しない");
 			return;
 		}
 		if (maxMinute !== undefined && dayjs(date).minute() > maxMinute) {
-			console.log("maxMinuteを超えていたら選択しない");
 			return;
 		}
 		setSelectedHour(String(dayjs(date).hour()));
