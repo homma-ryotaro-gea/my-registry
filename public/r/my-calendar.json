@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "my-calendar",
+  "title": "My Calendar",
+  "description": "A calendar component",
+  "registryDependencies": [
+    "calendar"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york/blocks/my-calendar/my-calendar.tsx",
+      "content": "const Mycalendar = () => {\n\treturn <div>Mycalendar</div>;\n};\n\nexport default Mycalendar;\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}
