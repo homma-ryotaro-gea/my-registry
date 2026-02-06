@@ -1,7 +1,7 @@
 {
 	"$schema": "https://ui.shadcn.com/schema/registry.json",
 	"name": "by_hr_library",
-	"homepage": "https://library.by_hr.com",
+	"homepage": "https://byhr-registry.vercel.app",
 	"items": [
 		{
 			"name": "hello-world",
