@@ -17,7 +17,7 @@ const CalendarWithTimeDatePicker = () => {
 					<PopoverTrigger asChild>
 						<Button variant="outline">日時を選択</Button>
 					</PopoverTrigger>
-					<PopoverContent className="w-[450px] border-none bg-transparent shadow-none p-0">
+					<PopoverContent className="w-[400px] border-none bg-transparent shadow-none p-0">
 						<CalendarWithTime date={dateTime} onSelect={setDateTime} />
 					</PopoverContent>
 				</Popover>
