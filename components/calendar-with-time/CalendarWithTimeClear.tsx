@@ -11,7 +11,6 @@ const CalendarWithTimeClear = () => {
 	return (
 		<div className="flex flex-col gap-4">
 			<div className="flex flex-col gap-2">
-				<span>Calendar with Time Clear Button</span>
 				<CalendarWithTimeComponent
 					date={dateTime}
 					onSelect={setDateTime}

@@ -10,7 +10,6 @@ const CalendarWithTimeDisabled = () => {
 	return (
 		<div className="flex flex-col gap-4">
 			<div className="flex flex-col gap-2">
-				<span>Calendar with Time disabled</span>
 				<CalendarWithTime
 					date={dateTime}
 					onSelect={setDateTime}

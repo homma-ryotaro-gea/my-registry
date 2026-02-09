@@ -10,7 +10,6 @@ const CalendarWithTime = () => {
 	return (
 		<div className="flex flex-col gap-4">
 			<div className="flex flex-col gap-2">
-				<span>Calendar with Time</span>
 				<CalendarWithTimeComponent date={dateTime} onSelect={setDateTime} />
 			</div>
 			<p>選択している日時: {dayjs(dateTime).format("YYYY年MM月DD日 HH:mm")}</p>

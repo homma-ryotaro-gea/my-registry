@@ -12,7 +12,6 @@ const CalendarWithTimeDatePicker = () => {
 	return (
 		<div className="flex flex-col gap-4">
 			<div className="flex flex-col gap-2">
-				<span>Date Picker</span>
 				<Popover>
 					<PopoverTrigger asChild>
 						<Button variant="outline">日時を選択</Button>
