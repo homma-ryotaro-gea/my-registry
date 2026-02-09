@@ -1,5 +1,6 @@
 import ComponentWrapper from "@/components/ComponentWrapper";
 import CalendarWithTime from "@/components/calendar-with-time/CalendarWithTime";
+import CalendarWithTimeClear from "@/components/calendar-with-time/CalendarWithTimeClear";
 import CalendarWithTimeDatePicker from "@/components/calendar-with-time/CalendarWithTimeDatePicker";
 import CalendarWithTimeDisabled from "@/components/calendar-with-time/CalendarWithTimeDisabled";
 import CalendarWithTimeMinMax from "@/components/calendar-with-time/CalendarWithTimeMinMax";
@@ -32,6 +33,9 @@ export default function Home() {
 							description="時間は0時から12時、分は0分から30分に制限"
 						>
 							<CalendarWithTimeMinMax />
+						</ComponentWrapper>
+						<ComponentWrapper title="Clear Button">
+							<CalendarWithTimeClear />
 						</ComponentWrapper>
 					</div>
 				</div>

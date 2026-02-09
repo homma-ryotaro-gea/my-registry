@@ -13,6 +13,7 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@/registry/br-hr/ui/select";
+import { Button } from "../ui/button";
 
 type CalendarWithTimeProps = {
 	date: Date | undefined;
@@ -22,6 +23,8 @@ type CalendarWithTimeProps = {
 	maxHour?: number;
 	minMinute?: number;
 	maxMinute?: number;
+	clearButton?: boolean;
+	onClear?: () => void;
 };
 
 const HOUR_OPTIONS = Array.from({ length: 24 }, (_, i) => ({
@@ -41,6 +44,8 @@ const CalendarWithTime = ({
 	maxHour,
 	minMinute,
 	maxMinute,
+	clearButton = false,
+	onClear,
 }: CalendarWithTimeProps) => {
 	const [selectedHour, setSelectedHour] = useState<string | undefined>(
 		undefined,
@@ -69,7 +74,13 @@ const CalendarWithTime = ({
 		onSelect(next);
 		setSelectedMinute(value);
 	};
-
+	const handleClear = () => {
+		setSelectedHour(undefined);
+		setSelectedMinute(undefined);
+		if (onClear) {
+			onClear();
+		}
+	};
 	useEffect(() => {
 		if (minHour !== undefined && dayjs(date).hour() < minHour) {
 			return;
@@ -85,8 +96,10 @@ const CalendarWithTime = ({
 		if (maxMinute !== undefined && dayjs(date).minute() > maxMinute) {
 			return;
 		}
-		setSelectedHour(String(dayjs(date).hour()));
-		setSelectedMinute(String(dayjs(date).minute()));
+		if (date) {
+			setSelectedHour(String(dayjs(date).hour()));
+			setSelectedMinute(String(dayjs(date).minute()));
+		}
 	}, [date, minHour, maxHour, minMinute, maxMinute]);
 
 	return (
@@ -150,6 +163,11 @@ const CalendarWithTime = ({
 								</SelectContent>
 							</Select>
 							<span className="shrink-0 text-muted-foreground">分</span>
+							{clearButton && (
+								<Button variant={"outline"} onClick={handleClear}>
+									クリア
+								</Button>
+							)}
 						</div>
 					</div>
 				</CardContent>
