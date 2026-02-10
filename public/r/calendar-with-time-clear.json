@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "calendar-with-time-clear",
+  "title": "Calendar with Time Clear",
+  "description": "時間付きカレンダー(クリアボタン付き)",
+  "dependencies": [
+    "dayjs",
+    "react-day-picker",
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://byhr-registry.vercel.app/r/calendar-with-time.json"
+  ],
+  "files": [
+    {
+      "path": "registry/br-hr/blocks/calendar-with-time-clear.tsx",
+      "content": "\"use client\";\nimport dayjs from \"dayjs\";\nimport { useState } from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport CalendarWithTime from \"./calendar-with-time\";\n\nconst CalendarWithTimeClear = () => {\n\t// 日付を親で管理する場合は state を渡す。省略するとコンポーネント内で管理（非制御）\n\t// 初期値は dayjs が確実にパースできる形式（YYYY-MM-DDTHH:mm）にする\n\tconst [dateTime, setDateTime] = useState<Date | undefined>(dayjs().toDate());\n\treturn (\n\t\t<div className=\"flex flex-col gap-4\">\n\t\t\t<div className=\"flex flex-col gap-2\">\n\t\t\t\t<CalendarWithTime\n\t\t\t\t\tdate={dateTime}\n\t\t\t\t\tonSelect={setDateTime}\n\t\t\t\t\tclearButton={true}\n\t\t\t\t\tonClear={() => {\n\t\t\t\t\t\tsetDateTime(undefined);\n\t\t\t\t\t}}\n\t\t\t\t/>\n\t\t\t</div>\n\t\t\t<p className={cn(\"whitespace-pre-wrap\", !dateTime && \"text-destructive\")}>\n\t\t\t\t{dateTime\n\t\t\t\t\t? `選択している日時: ${dayjs(dateTime).format(\"YYYY年MM月DD日 HH:mm\")}`\n\t\t\t\t\t: \"日時が選択されていません\"}\n\t\t\t</p>\n\t\t</div>\n\t);\n};\n\nexport default CalendarWithTimeClear;\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

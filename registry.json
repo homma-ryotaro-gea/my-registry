@@ -107,11 +107,27 @@
 			"type": "registry:component",
 			"title": "Calendar with Time",
 			"description": "時間付きカレンダー",
-			"registryDependencies": ["calendar", "card", "select"],
-			"dependencies": ["dayjs", "react-day-picker"],
+			"registryDependencies": ["calendar", "card", "select", "button"],
+			"dependencies": ["dayjs", "react-day-picker", "lucide-react"],
 			"files": [
 				{
 					"path": "registry/br-hr/blocks/calendar-with-time.tsx",
+					"type": "registry:component"
+				}
+			]
+		},
+		{
+			"name": "calendar-with-time-clear",
+			"type": "registry:component",
+			"title": "Calendar with Time Clear",
+			"description": "時間付きカレンダー(クリアボタン付き)",
+			"registryDependencies": [
+				"https://byhr-registry.vercel.app/r/calendar-with-time.json"
+			],
+			"dependencies": ["dayjs", "react-day-picker", "lucide-react"],
+			"files": [
+				{
+					"path": "registry/br-hr/blocks/calendar-with-time-clear.tsx",
 					"type": "registry:component"
 				}
 			]
