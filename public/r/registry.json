@@ -131,6 +131,36 @@
 					"type": "registry:component"
 				}
 			]
+		},
+		{
+			"name": "custom-table",
+			"type": "registry:component",
+			"title": "Custom Table",
+			"description": "カスタムテーブル",
+			"registryDependencies": [
+				"table",
+				"button",
+				"https://byhr-registry.vercel.app/r/table-utilities.json"
+			],
+			"dependencies": ["tanstack-react-table", "nuqs", "lucide-react"],
+			"files": [
+				{
+					"path": "registry/br-hr/blocks/custom-table.tsx",
+					"type": "registry:component"
+				}
+			]
+		},
+		{
+			"name": "table-utilities",
+			"type": "registry:lib",
+			"title": "Table Utilities",
+			"description": "テーブル用のユーティリティ",
+			"files": [
+				{
+					"path": "registry/br-hr/utilities/table/index.ts",
+					"type": "registry:lib"
+				}
+			]
 		}
 	]
 }

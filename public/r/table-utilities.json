@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "table-utilities",
+  "title": "Table Utilities",
+  "description": "テーブル用のユーティリティ",
+  "files": [
+    {
+      "path": "registry/br-hr/utilities/table/index.ts",
+      "content": "/*\n * ページネーションの表示数を取得する\n */\nexport const getDispPage = (currentPage: number, totalPage?: number) => {\n\tconst displayPages = [];\n\tconst items: {\n\t\tlabel: string | number;\n\t\tvalue: number;\n\t}[] = [];\n\n\tfor (let i = 1; i <= (totalPage ?? 0); i++) {\n\t\tif (\n\t\t\ti === 1 ||\n\t\t\ti === totalPage ||\n\t\t\t(i >= currentPage - 2 && i <= currentPage + 2)\n\t\t) {\n\t\t\tdisplayPages.push(i);\n\t\t}\n\t}\n\n\tlet previousPage = 0;\n\tfor (const page of displayPages) {\n\t\tif (previousPage) {\n\t\t\tif (page - previousPage === 2) {\n\t\t\t\titems.push({ label: previousPage + 1, value: previousPage + 1 });\n\t\t\t} else if (page - previousPage > 2) {\n\t\t\t\titems.push({ label: \"...\", value: previousPage + 1 });\n\t\t\t}\n\t\t}\n\t\titems.push({ label: page, value: page });\n\t\tpreviousPage = page;\n\t}\n\n\treturn items;\n};\n",
+      "type": "registry:lib"
+    }
+  ],
+  "type": "registry:lib"
+}
