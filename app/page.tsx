@@ -8,6 +8,7 @@ import CalendarWithTimeMinMax from "@/components/calendar-with-time/CalendarWith
 import Codes from "@/components/codes/Codes";
 import CodesCLI from "@/components/codes/CodesCLI";
 import CodesMultiple from "@/components/codes/CodesMultiple";
+import TimeSelectInput from "@/components/time-select-input/TimeSelectInput";
 
 export default function Home() {
 	return (
@@ -47,6 +48,24 @@ export default function Home() {
 							</ComponentWrapper>
 							<ComponentWrapper title="Clear Button">
 								<CalendarWithTimeClear />
+							</ComponentWrapper>
+						</div>
+					</Suspense>
+				</div>
+				<div className="flex flex-col gap-4">
+					<h2 className="text-2xl font-bold tracking-tight">
+						Time Select Input
+					</h2>
+					<Suspense
+						fallback={
+							<div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
+								読み込み中...
+							</div>
+						}
+					>
+						<div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
+							<ComponentWrapper title="Default">
+								<TimeSelectInput />
 							</ComponentWrapper>
 						</div>
 					</Suspense>

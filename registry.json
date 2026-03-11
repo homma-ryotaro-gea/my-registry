@@ -161,6 +161,20 @@
 					"type": "registry:lib"
 				}
 			]
+		},
+		{
+			"name": "time-select-input",
+			"type": "registry:component",
+			"title": "Time Select Input",
+			"description": "入力可能な時間選択セレクト（00:00形式、15分刻み）",
+			"registryDependencies": ["input", "scroll-area", "popover"],
+			"dependencies": ["lucide-react"],
+			"files": [
+				{
+					"path": "registry/br-hr/blocks/time-select-input.tsx",
+					"type": "registry:component"
+				}
+			]
 		}
 	]
 }
