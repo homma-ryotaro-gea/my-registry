@@ -1,6 +1,6 @@
 "use client";
 
-import { X } from "lucide-react";
+import { Timer, X } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import {
@@ -129,6 +129,7 @@ const TimeSelectInput = ({
 		<Popover open={open} onOpenChange={setOpen}>
 			<PopoverAnchor asChild>
 				<div className="relative w-fit" ref={wrapperRef}>
+					<Timer className="absolute left-2.5 top-1/2 size-4 -translate-y-1/2 shrink-0 text-muted-foreground pointer-events-none" />
 					<Input
 						type="text"
 						inputMode="numeric"
@@ -139,7 +140,7 @@ const TimeSelectInput = ({
 						onBlur={handleBlur}
 						disabled={disabled}
 						maxLength={MAX_LENGTH}
-						className={cn("w-[100px]", value.trim() && "pr-7", className)}
+						className={cn("w-[120px] pl-8", value.trim() && "pr-8", className)}
 						aria-label="時間を入力（00:00形式）"
 					/>
 					{value.trim() ? (
@@ -157,7 +158,7 @@ const TimeSelectInput = ({
 				</div>
 			</PopoverAnchor>
 			<PopoverContent
-				className="w-[100px] p-0 overflow-hidden"
+				className="w-[120px] p-0 overflow-hidden"
 				align="start"
 				onOpenAutoFocus={(e) => e.preventDefault()}
 			>
