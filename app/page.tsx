@@ -33,28 +33,44 @@ export default function Home() {
 						}
 					>
 						<div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
-							<ComponentWrapper title="Default">
+							<ComponentWrapper title="Default" name="calendar-with-time">
 								<CalendarWithTime />
 							</ComponentWrapper>
-							<ComponentWrapper title="Date Picker">
+							<ComponentWrapper
+								title="Date Picker"
+								name="calendar-with-time-date-picker"
+							>
 								<CalendarWithTimeDatePicker />
 							</ComponentWrapper>
-							<ComponentWrapper title="Disabled">
+							<ComponentWrapper
+								title="Disabled"
+								name="calendar-with-time-disabled"
+							>
 								<CalendarWithTimeDisabled />
 							</ComponentWrapper>
 							<ComponentWrapper
 								title="Min Max"
+								name="calendar-with-time-min-max"
 								description="時間は0時から12時、分は0分から30分に制限"
 							>
 								<CalendarWithTimeMinMax />
 							</ComponentWrapper>
-							<ComponentWrapper title="Clear Button">
+							<ComponentWrapper
+								title="Clear Button"
+								name="calendar-with-time-clear"
+							>
 								<CalendarWithTimeClear />
 							</ComponentWrapper>
-							<ComponentWrapper title="Time Select Input Version">
+							<ComponentWrapper
+								title="Time Select Input Version"
+								name="calendar-with-time-select-input"
+							>
 								<CalendarWithTimeSelectInput />
 							</ComponentWrapper>
-							<ComponentWrapper title="Time Select Input Date Picker">
+							<ComponentWrapper
+								title="Time Select Input Date Picker"
+								name="calendar-with-time-select-input-date-picker"
+							>
 								<CalendarWithTimeSelectInputDatePicker />
 							</ComponentWrapper>
 						</div>
@@ -72,7 +88,7 @@ export default function Home() {
 						}
 					>
 						<div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
-							<ComponentWrapper title="Default">
+							<ComponentWrapper title="Default" name="time-select-input">
 								<TimeSelectInput />
 							</ComponentWrapper>
 						</div>
@@ -88,13 +104,13 @@ export default function Home() {
 						}
 					>
 						<div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
-							<ComponentWrapper title="Default">
+							<ComponentWrapper title="Default" name="codes">
 								<Codes />
 							</ComponentWrapper>
-							<ComponentWrapper title="Multiple">
+							<ComponentWrapper title="Multiple" name="codes-multiple">
 								<CodesMultiple />
 							</ComponentWrapper>
-							<ComponentWrapper title="CLI">
+							<ComponentWrapper title="CLI" name="codes-cli">
 								<CodesCLI name="demo" />
 							</ComponentWrapper>
 						</div>
