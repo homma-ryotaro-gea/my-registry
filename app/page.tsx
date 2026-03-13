@@ -22,7 +22,7 @@ export default function Home() {
 			</header>
 			<main className="space-y-8">
 				<div className="flex flex-col gap-4">
-					<h2 className="text-2xl font-bold tracking-tight">
+					<h2 className="text-2xl font-bold tracking-tight sticky top-0 bg-background z-10 py-2">
 						Calendar with Time
 					</h2>
 					<Suspense
@@ -77,7 +77,7 @@ export default function Home() {
 					</Suspense>
 				</div>
 				<div className="flex flex-col gap-4">
-					<h2 className="text-2xl font-bold tracking-tight">
+					<h2 className="text-2xl font-bold tracking-tight sticky top-0 bg-background z-10 py-2">
 						Time Select Input
 					</h2>
 					<Suspense
@@ -95,7 +95,9 @@ export default function Home() {
 					</Suspense>
 				</div>
 				<div className="flex flex-col gap-4">
-					<h2 className="text-2xl font-bold tracking-tight">Codes</h2>
+					<h2 className="text-2xl font-bold tracking-tight sticky top-0 bg-background z-10 py-2">
+						Codes
+					</h2>
 					<Suspense
 						fallback={
 							<div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
