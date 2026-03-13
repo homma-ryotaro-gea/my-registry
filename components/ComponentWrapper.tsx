@@ -60,9 +60,14 @@ const ComponentWrapper = ({
 							<Code />
 						</Button>
 					</DialogTrigger>
-					<DialogContent className="w-full sm:max-w-[80%] pt-10">
+					<DialogContent className="sm:max-w-4xl pt-10">
 						<DialogTitle>{title}</DialogTitle>
-						<CodeBlock groups={["pnpm", "npm", "yarn", "bun"]} codes={codes} />
+						<div className="mt-4  overflow-y-auto">
+							<CodeBlock
+								groups={["pnpm", "npm", "yarn", "bun"]}
+								codes={codes}
+							/>
+						</div>
 					</DialogContent>
 				</Dialog>
 			</div>
