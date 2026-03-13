@@ -33,14 +33,35 @@ function normalizeTime(s: string): string {
 	const trimmed = s.trim();
 	if (trimmed.length === 0) return "00:00";
 	if (/[^0-9:]/.test(trimmed)) return "00:00";
-	if (/^\d{2}:\d{2}$/.test(trimmed)) return trimmed;
-	const digits = trimmed.replace(/:/g, "");
-	if (digits.length >= 4) {
-		const four = digits.slice(0, 4);
-		return `${four.slice(0, 2)}:${four.slice(2, 4)}`;
+
+	// すでに HH:mm 形式ならそのまま検証する
+	if (/^\d{2}:\d{2}$/.test(trimmed)) {
+		const [hhStr, mmStr] = trimmed.split(":");
+		const hh = Number(hhStr);
+		const mm = Number(mmStr);
+		if (Number.isNaN(hh) || Number.isNaN(mm)) return "00:00";
+		if (hh < 0 || hh > 23 || mm < 0 || mm > 59) return "00:00";
+		return trimmed;
 	}
-	const padded = digits.padStart(4, "0");
-	return `${padded.slice(0, 2)}:${padded.slice(2, 4)}`;
+
+	const digits = trimmed.replace(/:/g, "");
+
+	// 先頭4桁を使って HH:mm に組み立てる
+	let four: string;
+	if (digits.length >= 4) {
+		four = digits.slice(0, 4);
+	} else {
+		four = digits.padStart(4, "0");
+	}
+
+	const hh = Number(four.slice(0, 2));
+	const mm = Number(four.slice(2, 4));
+
+	// 存在しない時間は 00:00 にする
+	if (Number.isNaN(hh) || Number.isNaN(mm)) return "00:00";
+	if (hh < 0 || hh > 23 || mm < 0 || mm > 59) return "00:00";
+
+	return `${four.slice(0, 2)}:${four.slice(2, 4)}`;
 }
 
 type TimeSelectInputProps = {
@@ -126,7 +147,7 @@ const TimeSelectInput = ({
 	const displayValue = value;
 
 	return (
-		<Popover open={open} onOpenChange={setOpen}>
+		<Popover open={open} onOpenChange={setOpen} modal>
 			<PopoverAnchor asChild>
 				<div className="relative w-fit" ref={wrapperRef}>
 					<Timer className="absolute left-2.5 top-1/2 size-4 -translate-y-1/2 shrink-0 text-muted-foreground pointer-events-none" />

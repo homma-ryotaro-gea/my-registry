@@ -5,6 +5,8 @@ import CalendarWithTimeClear from "@/components/calendar-with-time/CalendarWithT
 import CalendarWithTimeDatePicker from "@/components/calendar-with-time/CalendarWithTimeDatePicker";
 import CalendarWithTimeDisabled from "@/components/calendar-with-time/CalendarWithTimeDisabled";
 import CalendarWithTimeMinMax from "@/components/calendar-with-time/CalendarWithTimeMinMax";
+import CalendarWithTimeSelectInput from "@/components/calendar-with-time/CalendarWithTimeSelectInput";
+import CalendarWithTimeSelectInputDatePicker from "@/components/calendar-with-time/CalendarWithTimeSelectInputDatePicker";
 import Codes from "@/components/codes/Codes";
 import CodesCLI from "@/components/codes/CodesCLI";
 import CodesMultiple from "@/components/codes/CodesMultiple";
@@ -48,6 +50,12 @@ export default function Home() {
 							</ComponentWrapper>
 							<ComponentWrapper title="Clear Button">
 								<CalendarWithTimeClear />
+							</ComponentWrapper>
+							<ComponentWrapper title="Time Select Input Version">
+								<CalendarWithTimeSelectInput />
+							</ComponentWrapper>
+							<ComponentWrapper title="Time Select Input Date Picker">
+								<CalendarWithTimeSelectInputDatePicker />
 							</ComponentWrapper>
 						</div>
 					</Suspense>
