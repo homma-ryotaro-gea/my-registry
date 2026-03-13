@@ -47,7 +47,13 @@ const ComponentWrapper = ({
 	];
 	return (
 		<div className="flex flex-col gap-4 border rounded-lg p-4 min-h-[450px] relative w-full ">
-			<div className="flex justify-end">
+			<div className="flex justify-between">
+				<div>
+					<h2 className="text-sm text-muted-foreground ">{title}</h2>
+					{description && (
+						<p className="text-sm text-muted-foreground">{description}</p>
+					)}
+				</div>
 				<Dialog>
 					<DialogTrigger asChild>
 						<Button variant="outline">
@@ -59,12 +65,6 @@ const ComponentWrapper = ({
 						<CodeBlock groups={["pnpm", "npm", "yarn", "bun"]} codes={codes} />
 					</DialogContent>
 				</Dialog>
-			</div>
-			<div>
-				<h2 className="text-sm text-muted-foreground ">{title}</h2>
-				{description && (
-					<p className="text-sm text-muted-foreground">{description}</p>
-				)}
 			</div>
 			<div className="flex items-center justify-center min-h-[400px] relative">
 				{children}
