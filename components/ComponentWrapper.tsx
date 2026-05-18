@@ -26,22 +26,22 @@ const ComponentWrapper = ({
 	const codes = [
 		{
 			lang: "sh",
-			code: `pnpx shadcn@latest add ${baseUrl()}/api/r/${name}`,
+			code: `pnpx shadcn@latest add ${baseUrl()}/r/${name}.json`,
 			group: "pnpm",
 		},
 		{
 			lang: "sh",
-			code: `npx shadcn@latest add ${baseUrl()}/api/r/${name}`,
+			code: `npx shadcn@latest add ${baseUrl()}/r/${name}.json`,
 			group: "npm",
 		},
 		{
 			lang: "sh",
-			code: `yarn shadcn@latest add ${baseUrl()}/api/r/${name}`,
+			code: `yarn shadcn@latest add ${baseUrl()}/r/${name}.json`,
 			group: "yarn",
 		},
 		{
 			lang: "sh",
-			code: `bunx --bun shadcn@latest add ${baseUrl()}/api/r/${name}`,
+			code: `bunx --bun shadcn@latest add ${baseUrl()}/r/${name}.json`,
 			group: "bun",
 		},
 	];
