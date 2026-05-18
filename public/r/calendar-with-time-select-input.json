@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "calendar-with-time-select-input",
+  "title": "Calendar with Time Select Input",
+  "description": "時間付きカレンダー（入力可能な時間選択）",
+  "dependencies": [
+    "dayjs",
+    "react-day-picker"
+  ],
+  "registryDependencies": [
+    "calendar",
+    "card",
+    "https://byhr-registry.vercel.app/r/time-select-input.json"
+  ],
+  "files": [
+    {
+      "path": "registry/br-hr/blocks/calendar-with-time-select-input.tsx",
+      "content": "\"use client\";\n\nimport dayjs from \"dayjs\";\nimport { useEffect, useState } from \"react\";\nimport type { Matcher, OnSelectHandler } from \"react-day-picker\";\nimport TimeSelectInput from \"@/registry/br-hr/blocks/time-select-input\";\nimport { Calendar } from \"@/registry/br-hr/ui/calendar\";\nimport { Card, CardContent } from \"@/registry/br-hr/ui/card\";\n\ntype CalendarWithTimeSelectInputProps = {\n\tdate: Date | undefined;\n\tonSelect: (date: Date) => void;\n\tdisabledDates?: Matcher[];\n\ttimeChangeWhenDateUndefinedMode?: \"ignore\" | \"today\";\n};\n\nconst CalendarWithTimeSelectInput = ({\n\tdate,\n\tonSelect,\n\tdisabledDates,\n\ttimeChangeWhenDateUndefinedMode = \"ignore\",\n}: CalendarWithTimeSelectInputProps) => {\n\tconst [timeValue, setTimeValue] = useState<string>(\n\t\tdate != null ? dayjs(date).format(\"HH:mm\") : \"\",\n\t);\n\n\t// 親の date が変わったときに timeValue も同期する\n\tuseEffect(() => {\n\t\tif (date) {\n\t\t\tsetTimeValue(dayjs(date).format(\"HH:mm\"));\n\t\t} else {\n\t\t\tsetTimeValue(\"\");\n\t\t}\n\t}, [date]);\n\n\tconst handleDaySelect: OnSelectHandler<Date> = (\n\t\tnextDate: Date | undefined,\n\t) => {\n\t\tif (!nextDate) return;\n\t\t// 既に時刻が入っていればそれを維持\n\t\tconst base = date ?? nextDate;\n\t\tconst merged = dayjs(nextDate)\n\t\t\t.hour(dayjs(base).hour())\n\t\t\t.minute(dayjs(base).minute())\n\t\t\t.second(0)\n\t\t\t.millisecond(0)\n\t\t\t.toDate();\n\t\tonSelect(merged);\n\t};\n\n\tconst handleTimeChange = (value: string) => {\n\t\t// 入力欄の表示は常に更新して、ユーザーが自由に入力できるようにする\n\t\tsetTimeValue(value);\n\n\t\t// クリアボタンで空文字になった場合は、日時はそのままにして入力欄だけクリア\n\t\tif (!value) {\n\t\t\treturn;\n\t\t}\n\n\t\t// 完全な HH:mm 形式になったタイミングでのみ Date を更新する\n\t\tif (!/^\\d{2}:\\d{2}$/.test(value)) {\n\t\t\treturn;\n\t\t}\n\n\t\tconst [hh, mm] = value.split(\":\").map((v) => Number(v));\n\n\t\tif (!date) {\n\t\t\tif (timeChangeWhenDateUndefinedMode === \"today\") {\n\t\t\t\tconst base = dayjs().hour(hh).minute(mm).second(0).millisecond(0);\n\t\t\t\tonSelect(base.toDate());\n\t\t\t}\n\t\t\treturn;\n\t\t}\n\n\t\tconst next = dayjs(date)\n\t\t\t.hour(hh)\n\t\t\t.minute(mm)\n\t\t\t.second(0)\n\t\t\t.millisecond(0)\n\t\t\t.toDate();\n\t\tonSelect(next);\n\t};\n\n\treturn (\n\t\t<div>\n\t\t\t<Card className=\"gap-0 overflow-hidden p-2\">\n\t\t\t\t<CardContent>\n\t\t\t\t\t<div className=\"p-6\">\n\t\t\t\t\t\t<Calendar\n\t\t\t\t\t\t\tmode=\"single\"\n\t\t\t\t\t\t\tselected={date}\n\t\t\t\t\t\t\tonSelect={handleDaySelect}\n\t\t\t\t\t\t\trequired={true}\n\t\t\t\t\t\t\tdefaultMonth={date}\n\t\t\t\t\t\t\tdisabled={disabledDates}\n\t\t\t\t\t\t\tshowOutsideDays={false}\n\t\t\t\t\t\t\tclassName=\"bg-transparent p-0 [--cell-size:--spacing(10)]\"\n\t\t\t\t\t\t/>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div className=\"flex justify-center items-center pb-2\">\n\t\t\t\t\t\t<TimeSelectInput\n\t\t\t\t\t\t\tvalue={timeValue}\n\t\t\t\t\t\t\tonChange={handleTimeChange}\n\t\t\t\t\t\t\tclassName=\"text-center\"\n\t\t\t\t\t\t/>\n\t\t\t\t\t</div>\n\t\t\t\t</CardContent>\n\t\t\t</Card>\n\t\t</div>\n\t);\n};\n\nexport default CalendarWithTimeSelectInput;\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

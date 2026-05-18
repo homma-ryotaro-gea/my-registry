@@ -133,6 +133,24 @@
 			]
 		},
 		{
+			"name": "calendar-with-time-select-input",
+			"type": "registry:component",
+			"title": "Calendar with Time Select Input",
+			"description": "時間付きカレンダー（入力可能な時間選択）",
+			"registryDependencies": [
+				"calendar",
+				"card",
+				"https://byhr-registry.vercel.app/r/time-select-input.json"
+			],
+			"dependencies": ["dayjs", "react-day-picker"],
+			"files": [
+				{
+					"path": "registry/br-hr/blocks/calendar-with-time-select-input.tsx",
+					"type": "registry:component"
+				}
+			]
+		},
+		{
 			"name": "custom-table",
 			"type": "registry:component",
 			"title": "Custom Table",
